@@ -1,10 +1,9 @@
-
 /**
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ·······  Imports
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 */
-import apiCalls from "./apiCalls.js";
+import dataCalls from "./dataCalls.js";
 import interactions from "./interactions.js";
 import pushInDom from "./pushInDom.js";
 
@@ -25,7 +24,7 @@ const actions = {
         const toCurrencie = dataFd.get("toCurrencie")
 
 
-        const promise = apiCalls.getLatestRate(fromCurrencie, toCurrencie);
+        let promise = dataCalls.getLatestRate(fromCurrencie, toCurrencie);
         const json = await (promise);
 
         const rate = json.data[dataFd.get("toCurrencie")].value;
@@ -33,13 +32,15 @@ const actions = {
         const calc = amount / rate
         const result = calc.toFixed(2)
 
-        // const symbol = jsonObject.value.data[dataFd.get("toCurrencie")].symbol
+        promise = dataCalls.getOneCurrencie(toCurrencie)
+        const finalCurrencie = await (promise);
+
+        const symbol = finalCurrencie.symbol
+
+        pushInDom.applyRate(result, symbol);                                    
 
 
-        pushInDom.applyRate(result);                                    
 
-
-        interactions.reset();
     }
 }
 /**

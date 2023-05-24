@@ -3,9 +3,49 @@
 ·······  Défintiions
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 */
-const apiCalls = {
+const dataCalls = {
 
     apiEndpoint: "https://api.currencyapi.com/v3",
+    currenciesList: "/data/currencies.json",
+
+    getCurrenciesList: async () => {
+        try {
+
+            const response = await fetch(dataCalls.currenciesList);
+
+
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+
+            //! Si tout est ok
+            const jsonObject = await response.json();
+            return jsonObject;
+
+        } catch (error) {
+            console.error(`Could not get products: ${error}`);
+        }
+    },
+
+    getOneCurrencie: async (currencie) => {
+        try {
+
+            const response = await fetch(dataCalls.currenciesList);
+
+
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+
+            //! Si tout est ok
+            const jsonObject = await response.json();
+            return jsonObject.data[currencie];
+
+        } catch (error) {
+            console.error(`Could not get products: ${error}`);
+        }
+        
+    },
 
     getLatestRate: async (fromCurrencie, toCurrencie,) => {
 
@@ -21,20 +61,23 @@ const apiCalls = {
 
         try {
 
-            const response = await fetch(`${apiCalls.apiEndpoint}/latest?base_currency=${fromCurrencie}&currencies=${toCurrencie}`, request);
+            const response = await fetch(`${dataCalls.apiEndpoint}/latest?base_currency=${fromCurrencie}&currencies=${toCurrencie}`, request);
 
 
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`);
             }
 
+            //! Si tout est ok
             const jsonObject = await response.json();
             return jsonObject;
 
         } catch (error) {
             console.error(`Could not get products: ${error}`);
         }
-    }
+    }, 
+
+
 
     // const jsonObject = await response.json();
     // return jsonObject;
@@ -45,4 +88,4 @@ const apiCalls = {
 ·······  Export
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 */
-export default apiCalls;
+export default dataCalls;

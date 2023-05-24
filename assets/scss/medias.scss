@@ -23,8 +23,15 @@
         }
 
         #article_rate {
-            width: 65%;
+            width: 30%;
+            text-align: center;
+            font-weight: 400;
             background-color: #f2f7fe;
+            display: inline-block;
+            p {
+                margin-top: 1em;
+                text-align: center;
+            }
         }
 
         #article_button {
