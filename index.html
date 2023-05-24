@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio - Currencies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="icon" href="https://simpleicons.org/icons/monero.svg" type="image/x-icon">
+</head>
+
+<body>
+    <main>
+        <nav>
+        </nav>
+        <h1>Currencies converter</h1>
+        <section id="convert_section">
+            <form>
+                <article>
+                    <p>Value</p>
+                    <input type="number" id="amount" name="amount" inputmode="decimal" autocomplete="off" placeholder="Value" value="45">
+                </article>
+                <article class=" box">
+                    <p>From</p>
+                    <input list="fromCurrencie" name="fromCurrencie" id="browser" placeholder="Currencie" value="EUR">
+                    <datalist id="fromCurrencie" class="datalist"></datalist>
+                </article>
+                <article>
+                    <p>To</p>
+                    <input list="toCurrencie" name="toCurrencie" id="browser" placeholder="Currencie" value="USD">
+                    <datalist id="toCurrencie" class="datalist"></datalist>
+                </article>
+                <article id="article_rate">
+                </article>
+                <article id="article_button">
+                    <button id="convert">Convert</button>
+                </article>
+            </form>
+        </section>
+    </main>
+    <script type="module" src="./assets/js/init.js"></script>
+</body>
+
+</html>
