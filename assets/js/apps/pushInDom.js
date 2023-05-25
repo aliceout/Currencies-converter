@@ -32,12 +32,19 @@ const pushInDom = {
 
     convertion: (amount, name, result, symbol, rate, fromCurrencie, toCurrencie) => {                       /// Affichage du résultat de la conversion
         let divToPush = document.querySelector("p.result");                                                 // On sélectionne la div dans leqeul on affichera le résultat
-        const resulttoPush = "<span class='startedCurrencie'>" + amount + " " + name + " = </span>" + "<strong>"  +" "+ result +" "+ symbol + "</strong>";
+        const resulttoPush = "<span class='startedCurrencie'>" + amount + " " + name + " = </span>" + "<strong>" + " " + result + " " + symbol + "</strong>";
         divToPush.innerHTML = resulttoPush;                                                                 // On affiche le résultat
 
         divToPush = document.querySelector("p.rate");                                                       // On sélectionne la div dans leqeul on affichera le résultat
         const ratetoPush = "Taux : " + 1 + " " + fromCurrencie + " = " + rate + " " + toCurrencie;          // On crée le 
         divToPush.innerHTML = ratetoPush;                                                                   // On affiche le résultat
+    },
+
+    alertBanner: (message) => {                                                                             /// Affichage du message d'alerte
+        let divToPush = document.querySelector("p.result");                                                 // On sélectionne la div dans leqeul on affichera le résultat
+        divToPush.innerHTML = message;                                                                      // On affiche le message
+        document.querySelector("p.rate").innerHTML = "";                                                    // On efface le taux 
+
     }
 }
 /**
