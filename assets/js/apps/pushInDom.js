@@ -30,10 +30,14 @@ const pushInDom = {
         });
     },
 
-    applyRate: (value, symbol) => {
-        const divToPush = document.getElementById("article_rate");
-        const result = "<p>Result : <strong>" + value +" "+ symbol + "</strong></p>";
-        divToPush.innerHTML = result;
+    convertion: (amount, name, result, symbol, rate, fromCurrencie, toCurrencie) => {
+        let divToPush = document.querySelector("p.result");
+        const resulttoPush = "<span class='startedCurrencie'>" + amount + " " + name + " = </span>" + "<strong>"  +" "+ result +" "+ symbol + "</strong>";
+        divToPush.innerHTML = resulttoPush;
+
+        divToPush = document.querySelector("p.rate"); 
+        const ratetoPush = "Taux : " + 1 + " " + fromCurrencie + " = " + rate + " " + toCurrencie;
+        divToPush.innerHTML = ratetoPush;
     }
 }
 /**

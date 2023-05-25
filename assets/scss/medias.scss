@@ -12,6 +12,8 @@
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: space-between;
+        flex: 0 0 auto;
 
         background-color: rgb(255, 255, 255);
         box-shadow: rgba(35, 55, 80, 0.3) 0px 6px 12px;
@@ -22,23 +24,53 @@
             align-content: center;
         }
 
-        #article_rate {
-            width: 30%;
-            text-align: center;
-            font-weight: 400;
-            background-color: #f2f7fe;
-            display: inline-block;
-            p {
+        .article_icon {
+            display: flex;
+            width: auto;
+            margin: auto;
+            padding: 0;
+
+            i {
                 margin-top: 1em;
                 text-align: center;
             }
         }
 
-        #article_button {
-            width: 30%;
-            margin: auto;
-            height: 3em;
+        .icon_hide {
+            color: #ffffff;
         }
 
+        #article_result,
+        #article_rate {
+            font-weight: 400;
+            display: inline-block;
+
+            p {
+                margin-top: .8em;
+                text-align: center;
+                font-size: 1em;
+            }
+        }
+        
+        #article_result p .startedCurrencie {
+            display: inline-flex;
+        }
+
+        #article_button {
+            flex: 0 0 auto;
+            margin: auto;
+            height: 3em;
+
+            flex-direction: row;
+            justify-content: flex-end;
+            text-align: right;
+
+            button {
+                width: 60%;
+                margin-right: 0;
+            }
+
+
+        }
     }
 }

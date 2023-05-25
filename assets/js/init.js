@@ -5,7 +5,6 @@
 */
 import pushInDom from './apps/pushInDom.js';
 import interactions from './apps/interactions.js';
-import dataCalls from './apps/dataCalls.js';
 
 /**
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░

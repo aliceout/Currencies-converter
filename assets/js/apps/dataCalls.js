@@ -5,8 +5,9 @@
 */
 const dataCalls = {
 
-    apiEndpoint: "https://api.currencyapi.com/v3",
     currenciesList: "/data/currencies.json",
+    apiEndpoint: "https://api.freecurrencyapi.com/v1",
+    apiKey: "gCgc4awk0mnQccYJLCQxSGndImP2ie8EKdGTFrb5",
 
     getCurrenciesList: async () => {
         try {
@@ -44,7 +45,6 @@ const dataCalls = {
         } catch (error) {
             console.error(`Could not get products: ${error}`);
         }
-        
     },
 
     getLatestRate: async (fromCurrencie, toCurrencie,) => {
@@ -55,7 +55,7 @@ const dataCalls = {
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
                 'access-control-allow-origin': '*',
-                "apikey": "0CtCXoxP5ANBmNjg6y9D9RdbN1h3fyQFrSRfODgW"
+                "apikey": dataCalls.apiKey
             },
         };
 
@@ -76,11 +76,6 @@ const dataCalls = {
             console.error(`Could not get products: ${error}`);
         }
     }, 
-
-
-
-    // const jsonObject = await response.json();
-    // return jsonObject;
 }
 
 /**
