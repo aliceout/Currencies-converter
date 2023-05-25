@@ -3,22 +3,18 @@
 ·······  Imports
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 */
-import actions from "./actions.js";
+import app from "./app.js";
 
 /**
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ·······  Défintiions
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 */
-const interactions = {
+const interactions = {  
 
-    reset : () => {
-        document.querySelector('form').reset();
-    },
-
-    addListenerToActions: () => {
-        const convertButton = document.querySelector('#convert_section form button');
-        convertButton.addEventListener('click', actions.convert);
+    addListenerToActions: () => {                                                        /// Ajout d'un evenement sur le bouton
+        const convertButton = document.querySelector('#convert_section form button');    // S"lection de la div à écouter
+        convertButton.addEventListener('click', app.convert);                            // Déclenchement d'une fonction au clic
     }
 }
 

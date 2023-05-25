@@ -5,52 +5,40 @@
 */
 const dataCalls = {
 
-    currenciesList: "/data/currencies.json",
-    apiEndpoint: "https://api.freecurrencyapi.com/v1",
-    apiKey: "gCgc4awk0mnQccYJLCQxSGndImP2ie8EKdGTFrb5",
+    apiEndpoint: "https://api.freecurrencyapi.com/v1",              // URL de l'API
+    apiKey: "gCgc4awk0mnQccYJLCQxSGndImP2ie8EKdGTFrb5",             // Clé API
 
-    getCurrenciesList: async () => {
+    getCurrenciesList: async () => {                                /// Fonction pour récupérer la liste des devises
+
+        const request = {                                           // Requête
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                'access-control-allow-origin': '*',
+                "apikey": dataCalls.apiKey
+            },
+        };
         try {
 
-            const response = await fetch(dataCalls.currenciesList);
+            const response = await fetch(`${dataCalls.apiEndpoint}/currencies`, request);  // Fetch
 
-
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
+            if (!response.ok) {                                     // Si erreur
+                throw new Error(`HTTP error: ${response.status}`);  // On affiche l'erreur
             }
 
-            //! Si tout est ok
-            const jsonObject = await response.json();
-            return jsonObject;
+            // Si tout est ok
+            const jsonObject = await response.json();               // On récupère la liste des devises
+            sessionStorage.setItem('currenciesList', JSON.stringify(jsonObject));   // On stocke la liste des devises dans le localStorage
+            return jsonObject;                                      // On retourne la liste des devises
 
-        } catch (error) {
-            console.error(`Could not get products: ${error}`);
+        } catch (error) {                                           // Si erreur
+            console.error(`Could not get products: ${error}`);      // On affiche l'erreur
         }
     },
 
-    getOneCurrencie: async (currencie) => {
-        try {
+    getLatestRate: async (fromCurrencie, toCurrencie,) => {         /// Fonction pour récupérer la liste des devises
 
-            const response = await fetch(dataCalls.currenciesList);
-
-
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
-            }
-
-            //! Si tout est ok
-            const jsonObject = await response.json();
-            return jsonObject.data[currencie];
-
-        } catch (error) {
-            console.error(`Could not get products: ${error}`);
-        }
-    },
-
-    getLatestRate: async (fromCurrencie, toCurrencie,) => {
-
-        // // Envoyer les données à l'API
-        const request = {
+        const request = {                                           // Requête
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -60,22 +48,19 @@ const dataCalls = {
         };
 
         try {
+            const response = await fetch(`${dataCalls.apiEndpoint}/latest?base_currency=${fromCurrencie}&currencies=${toCurrencie}`, request);  // Fetch
 
-            const response = await fetch(`${dataCalls.apiEndpoint}/latest?base_currency=${fromCurrencie}&currencies=${toCurrencie}`, request);
-
-
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
+            if (!response.ok) {                                       // Si erreur
+                throw new Error(`HTTP error: ${response.status}`);    // On affiche l'erreur
             }
+            // Si tout est ok
+            const jsonObject = await response.json();                 // On récupère le taux
+            return jsonObject;                                        // On retourne le taux
 
-            //! Si tout est ok
-            const jsonObject = await response.json();
-            return jsonObject;
-
-        } catch (error) {
-            console.error(`Could not get products: ${error}`);
+        } catch (error) {                                           // Si erreur
+            console.error(`Could not get products: ${error}`);      // On affiche l'erreur
         }
-    }, 
+    },
 }
 
 /**

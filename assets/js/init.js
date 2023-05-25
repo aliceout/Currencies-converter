@@ -5,6 +5,7 @@
 */
 import pushInDom from './apps/pushInDom.js';
 import interactions from './apps/interactions.js';
+import tools from "./apps/tools.js";
 
 /**
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -13,9 +14,9 @@ import interactions from './apps/interactions.js';
 */
 const app = {
     init: () => {
-        interactions.reset();
-        pushInDom.createList();
-        interactions.addListenerToActions();
+        tools.reset();                                                        // Reset des formulaires
+        pushInDom.createList();                                               // Création de la liste des devises disponibles pour conversion
+        interactions.addListenerToActions();                                  // Ajout d'evenementz sur les boutons
     }
 };
 
