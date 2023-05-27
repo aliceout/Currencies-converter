@@ -58,6 +58,28 @@ const app = {
         } catch (error) {                                                                   // Si une erreur est survenue
             console.error(error);                                                           // On affiche l'erreur
         }
+    },
+
+    history: async (event) => {
+        const base_currency = event.target.value;                                           // On récupère la devise
+        const currencies = "USD,EUR,CHF,CNY,INR"                                            // Définition des devises à récupérer
+        const dates = tools.dateCalculator(); 
+        let sesStorage = "";            
+                                   //  Récupération des dates nécessaires à l'appel à l'API
+        try {
+            const todayRate = await (dataCalls.getLatestRate(base_currency, currencies));       // Appel à l'API pour récupérer le taux de conversion 
+            console.log("history : ", todayRate.data);
+            sesStorage = ("sessionStorage : ", JSON.parse(sessionStorage.getItem("todayRate"))); 
+            console.log(sesStorage.data);
+            for (const element of dates) {
+                const history = await (dataCalls.history_rates(base_currency, currencies, element, element, element));
+                console.log("history : ", history.data);
+                sesStorage = ("sessionStorage : ", JSON.parse(sessionStorage.getItem(element))); 
+                console.log(sesStorage.data[element]);
+            };
+        } catch (error) {                                                                   // Si une erreur est survenue
+            console.error(error);                                                           // On affiche l'erreur
+        }
     }
 }
 /**
