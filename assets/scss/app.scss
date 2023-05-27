@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     background-color: hsl(0, 0%, 100%);
     min-height: 100vh;
 }
@@ -7,18 +8,23 @@ h1 {
     font-family: 'Comfortaa', cursive;
     color: #ffffff;
     font-weight: 700;
-    
-    padding-top: 2em;
+
+    padding-top: 1.5em;
     width: 80%;
     margin: auto;
     position: relative;
-    z-index:2 ;
+    z-index: 2;
 
     font-weight: 400;
     text-align: center;
 }
 
-.top_banner{
+h4 {
+    width: 100%;
+    text-align: left;
+}
+
+.top_banner {
     position: absolute;
     top: 0px;
     width: 100%;
@@ -27,34 +33,36 @@ h1 {
     background-image: none;
     background-position: center top;
     background-size: cover;
-    background-color: hsl(217.2,71.1%,29.8%);
-    z-index:1 ;
+    background-color: var(--primary-color);
+    z-index: 1;
 }
 
 .box {
     display: flex;
-}
-
-form  {
+    flex-direction: column;
+    flex-wrap: nowrap;
     position: relative;
-    z-index:2 ;
+    z-index: 2;
     margin: auto;
     padding: 2em 2em 1em 2em;
     width: 100%;
 
     margin-top: 2em;
 
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    border-radius: 8px;
+
+    #currencie_conversion{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     box-sizing: border-box;
-    gap: 1em;
-
-
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    border-radius: 8px;
+    gap: .8em;
+    width: 100%;
+    }
 
     article {
         margin: auto;
@@ -85,7 +93,7 @@ form  {
             border-radius: 6px;
             box-shadow: rgba(0, 17, 51, 0.05) 0px 3px 15px;
             color: rgb(20, 30, 55);
-            background-color: #fff;
+            background-color: #ffffff;
 
             font-weight: 700;
             text-align: center;
@@ -113,9 +121,10 @@ form  {
         display: none;
     }
 
-    #article_button,
+
     #article_result,
-    #article_rate {
+    #article_rate,
+    #article_button {
         margin: auto;
         padding-bottom: 0;
     }
@@ -141,10 +150,15 @@ form  {
 
     #article_rate {
         display: none;
+
         p {
             color: #a1a6b0;
         }
     }
+}
+
+#article_button button {
+    background-color: var(--primary-color);
 }
 
 #banner {
@@ -153,3 +167,60 @@ form  {
         font-weight: 500;
     }
 }
+
+#history-conversions {
+
+
+
+    td:first-child,
+    th:first-child {
+        border-radius: 10px 0 0 10px;
+    }
+
+    td:last-child,
+    th:last-child {
+        border-radius: 0 10px 10px 0;
+    }
+
+    .table td,
+    .table th {
+        vertical-align: middle;
+        padding: 1.4em .75em;
+        border: 1px solid #efefef;
+        border-left: none;
+        border-right: none;
+        text-align: center;
+
+        span {
+            margin-right: .5em;
+        }
+    }
+
+
+    #history_base {
+        color: #ffffff;
+        font-weight: 700;
+        border-radius: 20px;
+        padding: 1.1em .75em;
+
+        td {
+            background-color: var(--primary-color);
+        }
+
+        td, th {
+            padding: .5em .75em;
+
+    }
+
+    .select,
+    select {
+        font-weight: 700;
+        color: #ffffff;
+        background-color: var(--primary-color);
+        border: none;
+    }
+
+    .select:not(.is-multiple):not(.is-loading)::after {
+        border-color: white;
+    }
+}}

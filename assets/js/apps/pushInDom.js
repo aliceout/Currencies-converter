@@ -36,7 +36,7 @@ const pushInDom = {
         divToPush.innerHTML = ratetoPush;                                                                   // On affiche le résultat
 
         divToPush = document.querySelector("p.result");                                                     // On sélectionne la div dans leqeul on affichera le résultat
-        const resulttoPush = "<span class='startedCurrencie'>" + amount + " " + Cu1Symbol + " (" + Cu1Code + ") = </span><br/>" + "<strong>" + " " + result + " " + Cu2Symbol + " (" + Cu2Code + ") </strong>";
+        const resulttoPush = "<span class='startedCurrencie'>" + amount + " " + Cu1Symbol + " (" + Cu1Code + ")</span><br/>" + "<strong>" + " " + result + " " + Cu2Symbol + " (" + Cu2Code + ") </strong>";
         divToPush.innerHTML = resulttoPush;  
 
         console.log(jsonObject);

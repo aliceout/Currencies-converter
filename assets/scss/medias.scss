@@ -1,6 +1,11 @@
 @media only screen and (max-device-width : 870px) {
+
+
     .box {
         box-shadow: none;
+    }
+    h4, #history-conversions {
+        display:none
     }
 }
 
@@ -11,19 +16,30 @@
         background-color: hsl(0, 0%, 98%);
     }
 
-    form {
+    h1 {
+    
+        padding-top: 2em;
+    }
+
+    .box {
         width: 80%;
         margin: auto;
 
         margin-top: 4em;
 
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
         flex: 0 0 auto;
 
         background-color: hsl(0, 0%, 100%);
+
+
+
+    #currencie_conversion{
+        display: flex;
+        flex-direction: row;
+        gap: 2.5em 1em;
+        }
 
         article {
             width: 30%;
@@ -79,6 +95,7 @@
         margin: auto;
 
         margin-top: 2em;
+        margin-bottom: -2em;
 
         #article_banner {
             text-align: left;

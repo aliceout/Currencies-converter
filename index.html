@@ -11,9 +11,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/css/flag-icons.min.css"
+        integrity="sha512-uvXdJud8WaOlQFjlz9B15Yy2Au/bMAvz79F7Xa6OakCl2jvQPdHD0hb3dEqZRdSwG4/sknePXlE7GiarwA/9Wg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
         integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
@@ -27,46 +28,132 @@
         <section id="convert_section">
             <div class="top_banner"></div>
             <form class="box">
-                <article class="article_input">
-                    <p>Value</p>
-                    <input class="input is-normal" ttype="number" id="amount" name="amount" inputmode="decimal"
-                        autocomplete="off" placeholder="Value">
-                </article>
-                <article class="article_input">
-                    <p>From</p>
-                    <div class="select is-fullwidth ">
-                        <select class="datalist" id="fromCurrencie" >
-                            <option value=""></option>
-                        </select>
-                    </div>
-                </article>
-                <article class="article_icon"><i class="fa fa-exchange" aria-hidden="true"></i></article>
-                <article class="article_input">
-                    <p>To</p>
-                    <div class="select is-fullwidth ">
-                        <select class="datalist" id="toCurrencie">
-                            <option value=""></option>
-                        </select>
-                    </div>
-                </article>
-                <article id="article_rate">
-                    <p class="rate"></p>
-                </article>
-                <article id="article_result">
-                    <p class="result"></p>
-                </article>
-                <article class="article_icon icon_hide"><i class="fa fa-exchange" aria-hidden="true"></i></article>
-                <article id="article_button">
-                    <button id="convert" class="button is-normal is-responsive is-fullwidth is-info">
-                        Convert
-                    </button>
-                </article>
+                <h4 class="title is-4">Conversion de devises</h3>
+                <div id="currencie_conversion">
+                    <article class="article_input">
+                        <p>Value</p>
+                        <input class="input is-normal" ttype="number" id="amount" name="amount" inputmode="decimal"
+                            autocomplete="off" placeholder="Value">
+                    </article>
+                    <article class="article_input">
+                        <p>From</p>
+                        <div class="select is-fullwidth ">
+                            <select class="datalist" id="fromCurrencie">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </article>
+                    <article class="article_icon"><i class="fa fa-exchange" aria-hidden="true"></i></article>
+                    <article class="article_input">
+                        <p>To</p>
+                        <div class="select is-fullwidth ">
+                            <select class="datalist" id="toCurrencie">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </article>
+                    <article id="article_rate">
+                        <p class="rate"></p>
+                    </article>
+                    <article id="article_result">
+                        <p class="result"></p>
+                    </article>
+                    <article class="article_icon icon_hide"><i class="fa fa-exchange" aria-hidden="true"></i></article>
+                    <article id="article_button">
+                        <button id="convert" class="button is-normal is-fullwidth is-info">
+                            Convert
+                        </button>
+                    </article>
+                </div>
             </form>
+
+
             <div id="banner" class="is-hidden">
                 <div id="article_banner" class="notification is-danger is-light">
-                  </div>
+                </div>
             </div>
         </section>
+
+
+        <div id="history-conversions" class="box">
+            <h4 class="title is-4">Historique des taux de change</h3>
+            <table id="table-history" class="table is-fullwidth is-hoverable">
+                <thead>
+                    <tr>
+                        <th class="has-text-left">Currencies</th>
+                        <th class="has-text-left">Value</th>
+                        <th>Actual rate</th>
+                        <th>Fluctuation sur 24 h</th>
+                        <th>Fluctuation sur 7 jours</th>
+                        <th>Fluctuation sur 30 jours</th>
+                        <th>Fluctuation sur 6 mois</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="history_base">
+                        <td class="has-text-left">
+                            <div class="select">
+                                <select class="datalist" id="toCurrencie">
+                                    <option value="Choice">Choice currencie</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="has-text-left">1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="us_history class=" is-vcentered">
+                        <td class="has-text-left"><span class="fi fi-us"></span>US Dollars</td>
+                        <td class="has-text-left">1.4566</td>
+                        <td>1.4566</td>
+                        <td>23</td>
+                        <td>12</td>
+                        <td>3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr id="eu_history">
+                        <td class="has-text-left"><span class="fi fi-eu"></span>Euros</td>
+                        <td class="has-text-left">1.4566</td>
+                        <td>1.4566</td>
+                        <td>23</td>
+                        <td>12</td>
+                        <td>3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr id="ch_history">
+                        <td class="has-text-left"><span class="fi fi-ch"></span>Swiss Franc</td>
+                        <td class="has-text-left">1.4566</td>
+                        <td>1.4566</td>
+                        <td>23</td>
+                        <td>12</td>
+                        <td>3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr id="cn_history">
+                        <td class="has-text-left"><span class="fi fi-cn"></span>Chinese Yuan</td>
+                        <td class="has-text-left">1.4566</td>
+                        <td>1.4566</td>
+                        <td>23</td>
+                        <td>12</td>
+                        <td>3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr id="in_history">
+                        <td class="has-text-left"><span class="fi fi-in"></span>Indian Rupee</td>
+                        <td class="has-text-left">1.4566</td>
+                        <td>1.4566</td>
+                        <td>23</td>
+                        <td>12</td>
+                        <td>3</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
     </main>
     <script type="module" src="./assets/js/init.js"></script>
 </body>
