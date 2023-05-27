@@ -42,12 +42,12 @@ const pushInDom = {
         console.log(jsonObject);
     },
 
-    alertBanner: (message) => {                                                                             /// Affichage du message d'alerte
-        let divToPush = document.getElementById("article_banner");                                          // On sélectionne la div dans leqeul on affichera le résultat
-        divToPush.innerHTML = message;                                                                      // On affiche le message
-        let divToDisplay = document.getElementById("banner");                                               // On sélectionne la div dans leqeul on affichera le résultat
-        divToDisplay.classList.remove("is-hidden");                                                         // On cache
-        setTimeout(() => { divToDisplay.classList.add("is-hidden"); }, 2000);                               // On affiche
+    alertBanner: (message) => {                                                  /// Affichage du message d'alerte
+        let divToPush = document.getElementById("article_banner");               // On sélectionne la div dans leqeul on affichera le résultat
+        divToPush.innerHTML = message;                                           // On affiche le message
+        let divToDisplay = document.getElementById("banner");                    // On sélectionne la div dans leqeul on affichera le résultat
+        divToDisplay.classList.remove("is-hidden");                              // On affiche la bannière
+        setTimeout(() => { divToDisplay.classList.add("is-hidden"); }, 2000);    // Après un temps on remasque
         
 
 
