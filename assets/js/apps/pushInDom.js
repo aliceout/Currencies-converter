@@ -66,16 +66,18 @@ const pushInDom = {
 
                 const divToPush = newRow.querySelectorAll(".fluctuation");
                 const fluctuation = ((histoDate[moneyCode] - todayRate.data[moneyCode]) * histoDate[moneyCode]) * 100;
+                if (fluctuation < 0) {
+                    divToPush[index].style.color = "#b30021";
+                    } else {
+                        divToPush[index].style.color = "#26ab2c";
+                    }
                 divToPush[index].innerHTML = fluctuation.toFixed(2);
-
             }
-            
-
+        
             const placeToPush = document.getElementById("history_base");
             placeToPush.after(newRow);
         }
     },
-
 
     alertBanner: (message) => {                                                  /// Affichage du message d'alerte
         let divToPush = document.getElementById("article_banner");               // On sélectionne la div dans leqeul on affichera le résultat
@@ -83,9 +85,6 @@ const pushInDom = {
         let divToDisplay = document.getElementById("banner");                    // On sélectionne la div dans leqeul on affichera le résultat
         divToDisplay.classList.remove("is-hidden");                              // On affiche la bannière
         setTimeout(() => { divToDisplay.classList.add("is-hidden"); }, 2000);    // Après un temps on remasque
-
-
-
     }
 }
 /**
