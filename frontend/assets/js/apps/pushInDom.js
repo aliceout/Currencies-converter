@@ -49,9 +49,13 @@ const pushInDom = {
 
             const moneyCode = currencies[index];
 
+            if (todayRate.data[moneyCode] === 1) {
+                newRow.querySelector(".generated-histo").classList.add("is-hidden");
+            }
+
             const flagCode = countryList[index]
             newRow.querySelector(".flag").classList.add("fi-" + flagCode.toLowerCase());
-            
+
             const currenciesList = JSON.parse(sessionStorage.getItem('currenciesList'));
             newRow.querySelector(".currency_name").innerHTML = currenciesList.data[moneyCode].name;
 
@@ -63,15 +67,21 @@ const pushInDom = {
                 const histoDate = histoIndex[date];
 
                 const divToPush = newRow.querySelectorAll(".fluctuation");
-                const fluctuation = ((histoDate[moneyCode] - todayRate.data[moneyCode]) * histoDate[moneyCode]) * 100;
+                const fluctuation = ((histoDate[moneyCode] - todayRate.data[moneyCode]) / histoDate[moneyCode]) * 100;
                 if (fluctuation < 0) {
                     divToPush[index].style.color = "#b30021";
-                    } else {
-                        divToPush[index].style.color = "#26ab2c";
-                    }
-                divToPush[index].innerHTML = fluctuation.toFixed(5);
+                } else {
+                    divToPush[index].style.color = "#26ab2c";
+                }
+                // if (todayRate.data[moneyCode] !== 1) {
+                //     newRow.classList.add("is-hidden");
+                // }
+                // else {
+                //     console.log("equal :" + todayRate.data[moneyCode]);
+                // }
+                divToPush[index].innerHTML = fluctuation.toFixed(2) + " %";
             }
-        
+
             const placeToPush = document.getElementById("history_base");
             placeToPush.after(newRow);
         }

@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "aliceout",
+  "license": "Apache 2", 
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "kill": "killall node"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "nodemon": "^2.0.22",
+    "npm-check-updates": "^16.10.12"
+  }
+}
