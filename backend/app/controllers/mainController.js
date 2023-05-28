@@ -10,11 +10,12 @@ const mainController = {
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
                 'access-control-allow-origin': '*',
-                "apikey": process.env.apiKey
+                "apikey": process.env.apiKey,
+                "Access-Control-Allow-Methods": "GET, PUT, POST",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
             },
         };
         try {
-            console.log(mainController.request);
             const response = await fetch(`${process.env.apiEndpoint}/currencies`, request);
             if (!response.ok) {                                     // Si erreur
                 throw new Error(`HTTP error: ${response.status}`);  // On affiche l'erreur
@@ -35,7 +36,9 @@ const mainController = {
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
                 'access-control-allow-origin': '*',
-                "apikey": process.env.apiKey
+                "apikey": process.env.apiKey,
+                "Access-Control-Allow-Methods": "GET, PUT, POST",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
             },
         };
         try {
@@ -49,18 +52,20 @@ const mainController = {
             res.status(200).json(data);            // On renvoie la réponse avec un code 200 : OK
 
         } catch (error) {
-            console.error(error);
+            console.error("error : ", error);
             res.status(500).send(`An error occured with the database :\n${error.message}`);
         }
     },
 
-    history_rates: async (req, res) => {
+    history_rates: async (req, res) => {            
         const request = {                                           // Requête
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
                 'access-control-allow-origin': '*',
-                "apikey": process.env.apiKey
+                "apikey": process.env.apiKey,
+                "Access-Control-Allow-Methods": "GET, PUT, POST",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
             },
         };
         try {
@@ -72,7 +77,7 @@ const mainController = {
             // Si tout est ok
             const data = await response.json();
             res.status(200).json(data);            // On renvoie la réponse avec un code 200 : OK
-            console.log("history_rates : ", data);
+
 
         } catch (error) {
             console.error(error);

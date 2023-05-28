@@ -5,7 +5,9 @@
 */
 import dotenv from 'dotenv';                                                  // On récupère les variables d'environnement
 import express from 'express';                                                // On récupère le module Express.js                        
-import { router } from './router.js';                                         // On récupère les param du routeur                      // On récupère le module Connect Live Reload
+import { router } from './router.js';                                         // On récupère les param du routeur                     
+
+import cors from 'cors';                                             // On récupère le module cors
 
 import { notFound } from './middlewares/index.js';                            // On récupère les middlewaresReload
 
@@ -24,6 +26,7 @@ const app = express();                                                        //
 ·······  Middlewares
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 */
+app.use(cors('*'));
 
 app.use(express.json());
 

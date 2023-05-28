@@ -5,7 +5,7 @@
 */
 const dataCalls = {
 
-    apiEndpoint: "http://127.0.0.1:4151",              // URL de l'API
+    apiEndpoint: "http://127.0.0.1:4151",                           // URL de l'API
 
     getCurrenciesList: async () => {                                /// Fonction pour récupérer la liste des devises
 
@@ -26,8 +26,7 @@ const dataCalls = {
         } 
     },
 
-
-    getLatestRate: async (fromCurrencie, toCurrencie,) => {         /// Fonction pour récupérer la liste des devises
+    getLatestRate: async (fromCurrencie, toCurrencie) => {         /// Fonction pour récupérer la liste des devises
 
         try {
             const response = await fetch(`${dataCalls.apiEndpoint}/latest/base_currency/${fromCurrencie}/currencies/${toCurrencie}`);  // Fetch
@@ -44,18 +43,18 @@ const dataCalls = {
         }
     },
 
-
-    history_rates: async (base_currency, currencies, dateFrom, dateTo, localStoName) => {
+    history_rates: async (base_currency, currencies, dateFrom, dateTo) => {
 
         try {
-            const response = await fetch(`${dataCalls.apiEndpoint}/historical?currencies=${currencies}&base_currency=${base_currency}&date_from=${dateFrom}&date_to=${dateTo}`, request);  // Fetch  
-
+            const response = await fetch(`${dataCalls.apiEndpoint}/historical/currencies/${currencies}/base_currency/${base_currency}/date_from/${dateFrom}/date_to/${dateTo}`);  // Fetch  
+            console.log(`${dataCalls.apiEndpoint}/historical/currencies/${currencies}/base_currency/${base_currency}/date_from/${dateFrom}/date_to/${dateTo}`);
+            
             if (!response.ok) {                                      // Si erreur
                 throw new Error(`HTTP error: ${response.status}`);   // On affiche l'erreur
             }
             // Si tout est ok
             const jsonObject = await response.json();                // On récupère le taux               
-            return jsonObject;
+            return jsonObject;                                       // On retourne le taux
 
         } catch (error) {                                            // Si erreur
             console.error(`Could not get products: ${error}`);       // On affiche l'erreur

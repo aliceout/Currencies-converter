@@ -70,14 +70,13 @@ const app = {
         const promise = tools.moneyCodeByCountryCode(countryList);
         const currencies = await (promise);    
         const dates = tools.dateCalculator();
-        const todayDate = (tools.formatDate(new Date()));
 
         try {
             const todayRate = await (dataCalls.getLatestRate(base_currency, currencies));
             let historyRates = [];
 
             for (const element of dates) {
-                const history = await (dataCalls.history_rates(base_currency, currencies.toString(), element, element, element));
+                const history = await (dataCalls.history_rates(base_currency, currencies.toString(), element, element));
                 historyRates.push(history.data)
             };
 
