@@ -40,11 +40,9 @@ const pushInDom = {
         const resulttoPush = "<span class='startedCurrencie'>" + amount + " " + Cu1Symbol + " (" + Cu1Code + ")</span><br/>" + "<strong>" + " " + result + " " + Cu2Symbol + " (" + Cu2Code + ") </strong>";
         divToPush.innerHTML = resulttoPush;
 
-        console.log(jsonObject);
     },
 
     history: async (currencies, countryList, todayRate, dates, historyRates) => {
-        console.log("historyRateAtDate : ", historyRates);
         for (let index = 0; index < currencies.length; index++) {
             const template = document.getElementById("history_row");
             const newRow = document.importNode(template.content, true);
@@ -71,7 +69,7 @@ const pushInDom = {
                     } else {
                         divToPush[index].style.color = "#26ab2c";
                     }
-                divToPush[index].innerHTML = fluctuation.toFixed(2);
+                divToPush[index].innerHTML = fluctuation.toFixed(5);
             }
         
             const placeToPush = document.getElementById("history_base");

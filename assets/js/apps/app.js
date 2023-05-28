@@ -18,6 +18,7 @@ const app = {
         event.preventDefault();                                                             // Désactivation du comportement par défaut au clic  
 
         try {
+
             const amount = document.getElementById("amount").value                          // Récupération du montant à convertir
             const fromCurrencie = document.getElementById("fromCurrencie").value            // Récupération de la devise initiale
             const toCurrencie = document.getElementById("toCurrencie").value                // Récupération de la devise de destination
@@ -62,8 +63,10 @@ const app = {
     },
 
     history: async (event) => {
+        document.querySelectorAll(".generated-histo ").forEach(element => element.remove());
+
         const base_currency = event.target.value;
-        const countryList =  ["US","EU","CH","CN","IN"]                   // Code pays en base ISO2              
+        const countryList =  ["US","EU","CH","GB","CN","IN", "RU"]                   // Code pays en base ISO2              
         const promise = tools.moneyCodeByCountryCode(countryList);
         const currencies = await (promise);    
         const dates = tools.dateCalculator();
