@@ -13,6 +13,7 @@ import tools from "./tools.js";
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 */
 const app = {
+    
     convert: async (event) => {
         event.preventDefault();                                                             // Désactivation du comportement par défaut au clic  
 
@@ -61,22 +62,24 @@ const app = {
     },
 
     history: async (event) => {
-        const base_currency = event.target.value;                                           // On récupère la devise
-        const currencies = "USD,EUR,CHF,CNY,INR"                                            // Définition des devises à récupérer
-        const dates = tools.dateCalculator(); 
-        let sesStorage = "";            
-                                   //  Récupération des dates nécessaires à l'appel à l'API
+        const base_currency = event.target.value;
+        const countryList =  ["US","EU","CH","CN","IN"]                   // Code pays en base ISO2              
+        const promise = tools.moneyCodeByCountryCode(countryList);
+        const currencies = await (promise);    
+        const dates = tools.dateCalculator();
+        const todayDate = (tools.formatDate(new Date()));
+
         try {
-            const todayRate = await (dataCalls.getLatestRate(base_currency, currencies));       // Appel à l'API pour récupérer le taux de conversion 
-            console.log("history : ", todayRate.data);
-            sesStorage = ("sessionStorage : ", JSON.parse(sessionStorage.getItem("todayRate"))); 
-            console.log(sesStorage.data);
+            const todayRate = await (dataCalls.getLatestRate(base_currency, currencies));
+            let historyRates = [];
+
             for (const element of dates) {
-                const history = await (dataCalls.history_rates(base_currency, currencies, element, element, element));
-                console.log("history : ", history.data);
-                sesStorage = ("sessionStorage : ", JSON.parse(sessionStorage.getItem(element))); 
-                console.log(sesStorage.data[element]);
+                const history = await (dataCalls.history_rates(base_currency, currencies.toString(), element, element, element));
+                historyRates.push(history.data)
             };
+
+            pushInDom.history(currencies.reverse(), countryList.reverse(), todayRate, dates, historyRates);
+
         } catch (error) {                                                                   // Si une erreur est survenue
             console.error(error);                                                           // On affiche l'erreur
         }

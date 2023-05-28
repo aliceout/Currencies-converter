@@ -29,8 +29,8 @@ const tools = {
     formatDate: (dateObj) => {                                              /// Date du jour et formatage de la date
         const day = dateObj.getDate().toString().padStart(2, "0");          //  Récupération du jour
         const month = (dateObj.getMonth() + 1).toString().padStart(2, "0"); //  Récupération du jmois
-        const result1 = `${dateObj.getUTCFullYear()}-${month}-${day}`;        //  Formatage de la date
-        return [result1];                                                        // Retour du jour
+        const result1 = `${dateObj.getUTCFullYear()}-${month}-${day}`;      //  Formatage de la date
+        return [result1];                                                   // Retour du jour
     },
 
 
@@ -67,6 +67,16 @@ const tools = {
             tools.formatDate(oneMonthAgo),
             tools.formatDate(sixMonthsAgo),
         ];
+    },
+
+    moneyCodeByCountryCode: async (countryList) => {
+        const responseCodes = await fetch('/data/countryMoney.json');
+        const codes = await responseCodes.json();
+        const currencies = []
+        for (const iterator of countryList) {
+            currencies.push(codes[iterator] || null);
+        }
+        return currencies;
     }
 }
 /**

@@ -29,42 +29,43 @@
             <div class="top_banner"></div>
             <form class="box">
                 <h4 class="title is-4">Conversion de devises</h3>
-                <div id="currencie_conversion">
-                    <article class="article_input">
-                        <p>Value</p>
-                        <input class="input is-normal" ttype="number" id="amount" name="amount" inputmode="decimal"
-                            autocomplete="off" placeholder="Value">
-                    </article>
-                    <article class="article_input">
-                        <p>From</p>
-                        <div class="select is-fullwidth ">
-                            <select class="datalist" id="fromCurrencie">
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    </article>
-                    <article class="article_icon"><i class="fa fa-exchange" aria-hidden="true"></i></article>
-                    <article class="article_input">
-                        <p>To</p>
-                        <div class="select is-fullwidth ">
-                            <select class="datalist" id="toCurrencie">
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    </article>
-                    <article id="article_rate">
-                        <p class="rate"></p>
-                    </article>
-                    <article id="article_result">
-                        <p class="result"></p>
-                    </article>
-                    <article class="article_icon icon_hide"><i class="fa fa-exchange" aria-hidden="true"></i></article>
-                    <article id="article_button">
-                        <button id="convert" class="button is-normal is-fullwidth is-info">
-                            Convert
-                        </button>
-                    </article>
-                </div>
+                    <div id="currencie_conversion">
+                        <article class="article_input">
+                            <p>Value</p>
+                            <input class="input is-normal" ttype="number" id="amount" name="amount" inputmode="decimal"
+                                autocomplete="off" placeholder="Value">
+                        </article>
+                        <article class="article_input">
+                            <p>From</p>
+                            <div class="select is-fullwidth ">
+                                <select class="datalist" id="fromCurrencie">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </article>
+                        <article class="article_icon"><i class="fa fa-exchange" aria-hidden="true"></i></article>
+                        <article class="article_input">
+                            <p>To</p>
+                            <div class="select is-fullwidth ">
+                                <select class="datalist" id="toCurrencie">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </article>
+                        <article id="article_rate">
+                            <p class="rate"></p>
+                        </article>
+                        <article id="article_result">
+                            <p class="result"></p>
+                        </article>
+                        <article class="article_icon icon_hide"><i class="fa fa-exchange" aria-hidden="true"></i>
+                        </article>
+                        <article id="article_button">
+                            <button id="convert" class="button is-normal is-fullwidth is-info">
+                                Convert
+                            </button>
+                        </article>
+                    </div>
             </form>
 
 
@@ -77,84 +78,49 @@
 
         <div id="history-conversions" class="box">
             <h4 class="title is-4">Historique des taux de change</h3>
-            <table id="table-history" class="table is-fullwidth is-hoverable">
-                <thead>
-                    <tr>
-                        <th class="has-text-left">Currencies</th>
-                        <th class="has-text-left">Value</th>
-                        <th>Actual rate</th>
-                        <th>Fluctuation sur 24 h</th>
-                        <th>Fluctuation sur 7 jours</th>
-                        <th>Fluctuation sur 30 jours</th>
-                        <th>Fluctuation sur 6 mois</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="history_base">
-                        <td class="has-text-left">
-                            <div class="select">
-                                <select id="base_currency" class="datalist">
-                                    <option value="Choice">Choice currencie</option>
-                                </select>
-                            </div>
-                        </td>
-                        <td class="has-text-left">1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="us_history class=" is-vcentered">
-                        <td class="has-text-left"><span class="fi fi-us"></span>US Dollars</td>
-                        <td class="has-text-left">1.4566</td>
-                        <td>1.4566</td>
-                        <td>23</td>
-                        <td>12</td>
-                        <td>3</td>
-                        <td>3</td>
-                    </tr>
-                    <tr id="eu_history">
-                        <td class="has-text-left"><span class="fi fi-eu"></span>Euros</td>
-                        <td class="has-text-left">1.4566</td>
-                        <td>1.4566</td>
-                        <td>23</td>
-                        <td>12</td>
-                        <td>3</td>
-                        <td>3</td>
-                    </tr>
-                    <tr id="ch_history">
-                        <td class="has-text-left"><span class="fi fi-ch"></span>Swiss Franc</td>
-                        <td class="has-text-left">1.4566</td>
-                        <td>1.4566</td>
-                        <td>23</td>
-                        <td>12</td>
-                        <td>3</td>
-                        <td>3</td>
-                    </tr>
-                    <tr id="cn_history">
-                        <td class="has-text-left"><span class="fi fi-cn"></span>Chinese Yuan</td>
-                        <td class="has-text-left">1.4566</td>
-                        <td>1.4566</td>
-                        <td>23</td>
-                        <td>12</td>
-                        <td>3</td>
-                        <td>3</td>
-                    </tr>
-                    <tr id="in_history">
-                        <td class="has-text-left"><span class="fi fi-in"></span>Indian Rupee</td>
-                        <td class="has-text-left">1.4566</td>
-                        <td>1.4566</td>
-                        <td>23</td>
-                        <td>12</td>
-                        <td>3</td>
-                        <td>3</td>
-                    </tr>
-                </tbody>
-            </table>
+                <table id="table-history" class="table is-fullwidth is-hoverable">
+                    <thead>
+                        <tr>
+                            <th class="has-text-left">Currencies</th>
+                            <th class="has-text-left">Value</th>
+                            <th>Fluctuation sur 24 h</th>
+                            <th>Fluctuation sur 7 jours</th>
+                            <th>Fluctuation sur 30 jours</th>
+                            <th>Fluctuation sur 6 mois</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="history_base">
+                            <td class="has-text-left">
+                                <div class="select">
+                                    <select id="base_currency" class="datalist">
+                                        <option value="Choice">Choice currencie</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="has-text-left">1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
 
         </div>
     </main>
+
+    <template class="is-hidden" id="history_row">
+        <tr class=" is-vcentered">
+            <td class="has-text-left"><span class="flag fi"></span><span class="currency_name"></span></span></td>
+            <td class="value has-text-left"></td>
+            <td class="fluctuation" ></td>
+            <td class="fluctuation" ></td>
+            <td class="fluctuation" ></td>
+            <td class="fluctuation" ></td>
+        </tr>
+    </template>
+
     <script type="module" src="./assets/js/init.js"></script>
 </body>
 

@@ -4,6 +4,7 @@
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 */
 import dataCalls from "./dataCalls.js";
+import tools from "./tools.js";
 
 /**
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -24,7 +25,7 @@ const pushInDom = {
                 const option = document.createElement('option');            // On sélectionne l'élement qu'on va être crée
                 option.value = `${property}`;                               // On lui ajoute une valeur
                 option.label = `${property} : ${data[property].name}`;      // On lui ajoute un nom à afficher
-                option.innerHTML =  `${property} : ${data[property].name}`;   
+                option.innerHTML = `${property} : ${data[property].name}`;
                 element.appendChild(option);                                // On l'ajoute au DOM
             }
         });
@@ -37,10 +38,44 @@ const pushInDom = {
 
         divToPush = document.querySelector("p.result");                                                     // On sélectionne la div dans leqeul on affichera le résultat
         const resulttoPush = "<span class='startedCurrencie'>" + amount + " " + Cu1Symbol + " (" + Cu1Code + ")</span><br/>" + "<strong>" + " " + result + " " + Cu2Symbol + " (" + Cu2Code + ") </strong>";
-        divToPush.innerHTML = resulttoPush;  
+        divToPush.innerHTML = resulttoPush;
 
         console.log(jsonObject);
     },
+
+    history: async (currencies, countryList, todayRate, dates, historyRates) => {
+        console.log("historyRateAtDate : ", historyRates);
+        for (let index = 0; index < currencies.length; index++) {
+            const template = document.getElementById("history_row");
+            const newRow = document.importNode(template.content, true);
+
+            const moneyCode = currencies[index];
+
+            const flagCode = countryList[index]
+            newRow.querySelector(".flag").classList.add("fi-" + flagCode.toLowerCase());
+            
+            const currenciesList = JSON.parse(sessionStorage.getItem('currenciesList'));
+            newRow.querySelector(".currency_name").innerHTML = currenciesList.data[moneyCode].name;
+
+            newRow.querySelector(".value").innerHTML = todayRate.data[moneyCode];
+
+            for (let index = 0; index < historyRates.length; index++) {
+                const date = dates[index];
+                const histoIndex = historyRates[index];
+                const histoDate = histoIndex[date];
+
+                const divToPush = newRow.querySelectorAll(".fluctuation");
+                const fluctuation = ((histoDate[moneyCode] - todayRate.data[moneyCode]) * histoDate[moneyCode]) * 100;
+                divToPush[index].innerHTML = fluctuation.toFixed(2);
+
+            }
+            
+
+            const placeToPush = document.getElementById("history_base");
+            placeToPush.after(newRow);
+        }
+    },
+
 
     alertBanner: (message) => {                                                  /// Affichage du message d'alerte
         let divToPush = document.getElementById("article_banner");               // On sélectionne la div dans leqeul on affichera le résultat
@@ -48,7 +83,7 @@ const pushInDom = {
         let divToDisplay = document.getElementById("banner");                    // On sélectionne la div dans leqeul on affichera le résultat
         divToDisplay.classList.remove("is-hidden");                              // On affiche la bannière
         setTimeout(() => { divToDisplay.classList.add("is-hidden"); }, 2000);    // Après un temps on remasque
-        
+
 
 
     }
