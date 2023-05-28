@@ -1,14 +1,13 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "",
+  "name": "currencies_converter_backend",
+  "description": "Backend of Currencies converter",
   "main": "index.js",
-  "keywords": [],
   "author": "aliceout",
-  "license": "Apache 2", 
+  "license": "Mozilla Public License Version 2.0", 
+  "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node ./app/index.js",
+    "dev": "nodemon ./app/index.js",
     "kill": "killall node"
   },
   "dependencies": {
