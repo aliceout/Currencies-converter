@@ -8,8 +8,8 @@ const mainController = {
         const request = {                                           // Requête
             method: 'GET',
             headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-                'access-control-allow-origin': '*',
+               'Content-type': 'application/json; charset=UTF-8',
+               'Access-Control-Allow-Origin': '*',
                 "apikey": process.env.apiKey,
                 "Access-Control-Allow-Methods": "GET, PUT, POST",
                 "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"

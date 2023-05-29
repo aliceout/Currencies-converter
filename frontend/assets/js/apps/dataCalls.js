@@ -5,10 +5,9 @@
 */
 const dataCalls = {
 
-    apiEndpoint: "http://127.0.0.1:4151",                           // URL de l'API
+    apiEndpoint: "https://currencies.lunalink.nl",                           // URL de l'API
 
     getCurrenciesList: async () => {                                /// Fonction pour récupérer la liste des devises
-
         try {
             const response = await fetch(`${dataCalls.apiEndpoint}/currencies`);  // Fetch
 
@@ -23,7 +22,7 @@ const dataCalls = {
 
         } catch (error) {                                           // Si erreur
             console.error(`Could not get products: ${error}`);      // On affiche l'erreur
-        } 
+        }
     },
 
     getLatestRate: async (fromCurrencie, toCurrencie) => {         /// Fonction pour récupérer la liste des devises
@@ -48,7 +47,7 @@ const dataCalls = {
         try {
             const response = await fetch(`${dataCalls.apiEndpoint}/historical/currencies/${currencies}/base_currency/${base_currency}/date_from/${dateFrom}/date_to/${dateTo}`);  // Fetch  
             console.log(`${dataCalls.apiEndpoint}/historical/currencies/${currencies}/base_currency/${base_currency}/date_from/${dateFrom}/date_to/${dateTo}`);
-            
+
             if (!response.ok) {                                      // Si erreur
                 throw new Error(`HTTP error: ${response.status}`);   // On affiche l'erreur
             }
