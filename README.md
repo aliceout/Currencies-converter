@@ -1,5 +1,4 @@
 # Currencies converter
 Personnal project for my portfolio
 
-![image](https://github.com/aliceout/portfolio-currencies/assets/10231985/56385238-cd45-436b-ba6a-12ebcf27c596)
-
+![smartmockups_li8m9z7c](https://github.com/aliceout/portfolio-currencies/assets/10231985/b3e5e45c-69b7-495f-b383-d5dd7a73d7d0)
