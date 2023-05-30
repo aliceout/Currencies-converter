@@ -33,27 +33,27 @@ const pushInDom = {
 
     convertion: (amount, Cu1Name, Cu2Name, Cu1Code, Cu2Code, result, Cu1Symbol, Cu2Symbol, rate) => {       /// Affichage du résultat de la conversion
         let divToPush = document.querySelector("p.rate");                                                   // On sélectionne la div dans leqeul on affichera le résultat
-        const ratetoPush = 1 + " " + Cu1Name + " = <br/>" + rate + " " + Cu2Name;                           // On crée le 
+        const ratetoPush = 1 + " " + Cu1Name + " = <br/>" + rate + " " + Cu2Name;                           // On crée le taux de conversion à afficher
         divToPush.innerHTML = ratetoPush;                                                                   // On affiche le résultat
 
         divToPush = document.querySelector("p.result");                                                     // On sélectionne la div dans leqeul on affichera le résultat
-        const resulttoPush = "<span class='startedCurrencie'>" + amount + " " + Cu1Symbol + " (" + Cu1Code + ")</span><br/>" + "<strong>" + " " + result + " " + Cu2Symbol + " (" + Cu2Code + ") </strong>";
-        divToPush.innerHTML = resulttoPush;
+        const resulttoPush = "<span class='startedCurrencie'>" + amount + " " + Cu1Symbol + " (" + Cu1Code + ")</span><br/>" + "<strong>" + " " + result + " " + Cu2Symbol + " (" + Cu2Code + ") </strong>";    // On crée le texte de résultat à insérer
+        divToPush.innerHTML = resulttoPush;                                                                 // On affiche le résultat
 
     },
 
-    history: async (currencies, countryList, todayRate, dates, historyRates) => {
-        for (let index = 0; index < currencies.length; index++) {
-            const template = document.getElementById("history_row");
-            const newRow = document.importNode(template.content, true);
+    history: async (currencies, countryList, todayRate, dates, historyRates) => {                           /// Affichage et calcul des historiques de conversion
+        for (let index = 0; index < currencies.length; index++) {   // Pour chaque devise de la liste
+            const template = document.getElementById("history_row");    // On récupère le template de ligne à dupliquer
+            const newRow = document.importNode(template.content, true); // On procède au clonage de ce template
 
-            const moneyCode = currencies[index];
+            const moneyCode = currencies[index];    // Récupération du code à trois chiffres de la devise
 
-            if (todayRate.data[moneyCode] === 1) {
-                newRow.querySelector(".generated-histo").classList.add("is-hidden");
+            if (todayRate.data[moneyCode] === 1) {  // Si le taux de conversion est égale à 1 (même devise que celle sélectionnée)
+                newRow.querySelector(".generated-histo").classList.add("is-hidden");    // Alors on masque la ligne au loieu de l'afficher
             }
 
-            const flagCode = countryList[index]
+            const flagCode = countryList[index] // ON récupére le code à deux chiffres du pays pour afficher le drapeau
             newRow.querySelector(".flag").classList.add("fi-" + flagCode.toLowerCase());
 
             const currenciesList = JSON.parse(sessionStorage.getItem('currenciesList'));
