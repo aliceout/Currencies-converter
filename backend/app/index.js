@@ -21,7 +21,7 @@ import { notFound } from './middlewares/index.js';                            //
 */
 dotenv.config();                                                              // On les passe en paramètres
 
-const PORT = process.env.PORT || 3000;                                        // On définit le port à partir des variables d'environnement
+const PORT = process.env.PORT || 4151;                                        // On définit le port à partir des variables d'environnement
 const app = express();                                                        // On crée l'application
 
 /**
@@ -62,5 +62,5 @@ app.use("/middlewares", notFound);
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 */
 app.listen(PORT, () => {                                                      // On lance l'application sur le port configuré
-    console.log(process.env.START_SERVER + PORT || 'http://localhost:3000');  // On affiche le message de lancement (configuré dans les variables d'environnement) 
+    console.log(process.env.START_SERVER + PORT || 'http://localhost:4151');  // On affiche le message de lancement (configuré dans les variables d'environnement) 
 });
