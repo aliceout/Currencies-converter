@@ -8,8 +8,8 @@ const mainController = {
         const request = {                                           // Requête
             method: 'GET',
             headers: {
-               'Content-type': 'application/json; charset=UTF-8',
-               'Access-Control-Allow-Origin': '*',
+                'Content-type': 'application/json; charset=UTF-8',
+                'Access-Control-Allow-Origin': '*',
                 "apikey": process.env.apiKey,
                 "Access-Control-Allow-Methods": "GET, PUT, POST",
                 "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
@@ -57,7 +57,7 @@ const mainController = {
         }
     },
 
-    history_rates: async (req, res) => {            
+    history_rates: async (req, res) => {
         const request = {                                           // Requête
             method: 'GET',
             headers: {

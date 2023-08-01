@@ -21,8 +21,6 @@ router.get('/latest/base_currency/:fromCurrencie/currencies/:toCurrencie', mainC
 
 router.get('/historical/currencies/:currencies/base_currency/:base_currency/date_from/:dateFrom/date_to/:dateTo', mainController.history_rates); 
 
-// /historical/currencies/USD,EUR,CHF,GBP,CNY,INR,RUB/base_currency/HRK/date_from/2023-05-26/date_to/2023-05-26
-
 
 /**
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░

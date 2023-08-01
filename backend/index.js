@@ -5,14 +5,14 @@
 */
 import dotenv from 'dotenv';                                                  // On récupère les variables d'environnement
 import express from 'express';                                                // On récupère le module Express.js
-import { router } from './router.js';                                         // On récupère les param du routeur
+import { router } from './app/router.js';                                         // On récupère les param du routeur
 
 import compression from 'compression';
 import helmet from 'helmet';
 import RateLimit from 'express-rate-limit';
-import cors from 'cors';                                             // On récupère le module cors
+import cors from 'cors';                                                      // On récupère le module cors
 
-import { notFound } from './middlewares/index.js';                            // On récupère les middlewaresReload
+import { notFound } from './app/middlewares/index.js';                            // On récupère les middlewaresReload
 
 /**
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
