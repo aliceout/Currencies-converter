@@ -5,7 +5,7 @@
 */
 const dataCalls = {
 
-    apiEndpoint: "https://currencies.lunalink.nl",                  // URL de l'API
+    apiEndpoint: "https://currencies.backlice.dev",                  // URL de l'API
 
     getCurrenciesList: async () => {                                /// Fonction pour récupérer la liste des devises
         try {
