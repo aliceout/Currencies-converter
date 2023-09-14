@@ -1,7 +1,7 @@
 # Currencies converter
 Personnal project for my portfolio
 
-**URL adress** : [currencies.aliceosdel.work](https://currencies.aliceosdel.work)
+**URL adress** : [currencies.aliceout.dev](https://currencies.aliceout.dev)
 
 **Front** : Html, Scss, Javascript </br>
 **Backend** : Node.js (with Express.js)
